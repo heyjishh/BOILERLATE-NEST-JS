@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Running pre-push hook"
+pnpm lint && pnpm audit && pnpm audit --fix && pnpm format

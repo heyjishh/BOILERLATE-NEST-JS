@@ -1,0 +1,5 @@
+# Run ESLint to catch issues like unused variables, console statements, etc.
+pnpm run lint &&
+
+# Run Prettier to format the code
+pnpm run format
