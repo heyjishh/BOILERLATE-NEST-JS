@@ -34,7 +34,7 @@ import { CheckoutModule } from "./modules/checkout/checkout.module";
     DatabaseModule,
     EnvironmentModule,
     CoreModule,
-    CheckoutModule
+    CheckoutModule,
   ],
   controllers: [],
   providers: [

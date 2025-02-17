@@ -5,14 +5,13 @@ import { CheckoutService } from "./checkout.service";
 import { CheckoutController } from "./checkout.controller";
 
 @Module({
-    imports: [
-        ConfigModule.forRoot({
-            isGlobal: true,
-        }),
-    ],
-    providers: [CheckoutService],
-    controllers: [CheckoutController],
-    exports: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+  ],
+  providers: [CheckoutService],
+  controllers: [CheckoutController],
+  exports: [],
 })
-
-export class CheckoutModule { }
+export class CheckoutModule {}

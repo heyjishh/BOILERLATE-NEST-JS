@@ -26,7 +26,9 @@ export class Conversation extends Document {
   role: ROLE_TYPE;
 
   @Prop({ index: true })
-  messages: [{ type: MongooseSchema.Types.ObjectId, ref: 'messages', index: true }]
+  messages: [
+    { type: MongooseSchema.Types.ObjectId; ref: "messages"; index: true },
+  ];
 
   @Prop({ default: DEFAULT_STATUS.INACTIVE })
   isDeleted: boolean;

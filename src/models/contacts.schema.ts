@@ -11,7 +11,7 @@ export class Contact extends Document {
     type: MongooseSchema.Types.ObjectId,
     ref: User.name,
     index: true,
-    unique: true
+    unique: true,
   })
   userId: Types.ObjectId;
 

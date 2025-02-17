@@ -18,7 +18,12 @@ async function bootstrap() {
   app.enableCors({
     origin: ["http://localhost:3000", "http://localhost:4200"],
     methods: ["GET", "POST", "PUT", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization", "Accept", "X-Requested-With"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Accept",
+      "X-Requested-With",
+    ],
   });
 
   // Use compression for better performance

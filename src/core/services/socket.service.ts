@@ -19,7 +19,8 @@ import { RequestEnergyDataDto } from "./dto/sockets.dto";
   },
 })
 export class SocketService
-  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
+{
   // constructor(
   //   // private readonly dashboardAndReportsService: DashboardAndReportsService,
   // ) { }

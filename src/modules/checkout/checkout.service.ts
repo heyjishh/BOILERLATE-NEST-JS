@@ -1,6 +1,9 @@
 import { BadGatewayException, Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
-import { createStorefrontApiClient, StorefrontApiClient } from "@shopify/storefront-api-client";
+import {
+  createStorefrontApiClient,
+  StorefrontApiClient,
+} from "@shopify/storefront-api-client";
 
 import { CheckoutAddressDTO, CheckoutTokenDto } from "./dtos/checkout.dtos";
 
@@ -58,17 +61,16 @@ export class CheckoutService {
           return {
             quantity: line?.node?.quantity,
             merchandiseId: line?.node?.merchandise?.id,
-          }
-        })
-
-      }
+          };
+        }),
+      },
     };
 
     try {
       const response = await this.client.request(query, { variables });
       return response;
     } catch (error) {
-      console.error('Error creating cart:', error);
+      console.error("Error creating cart:", error);
       throw error;
     }
   }
@@ -142,7 +144,9 @@ export class CheckoutService {
     `;
 
     try {
-      const response = await this.client.request(query, { variables: { cartId } });
+      const response = await this.client.request(query, {
+        variables: { cartId },
+      });
       if (response) {
         const data = await this.createCart(response?.data?.cart);
         const { checkoutUrl, id } = data?.data?.cartCreate?.cart;
@@ -150,10 +154,11 @@ export class CheckoutService {
           response,
           cart: {
             checkoutUrl,
-            cartId: id
-          }
-        }
-      } return []
+            cartId: id,
+          },
+        };
+      }
+      return [];
     } catch (error) {
       throw new BadGatewayException(error);
     }
@@ -183,13 +188,17 @@ export class CheckoutService {
     `;
 
     try {
-      return await this.client.request(query, { variables: { accessToken: queryParams.customerAccessToken } });
+      return await this.client.request(query, {
+        variables: { accessToken: queryParams.customerAccessToken },
+      });
     } catch (error) {
       throw new BadGatewayException(error.message);
     }
   }
 
-  async cartDeliveryAddressesAdd(queryParams: CheckoutAddressDTO): Promise<any> {
+  async cartDeliveryAddressesAdd(
+    queryParams: CheckoutAddressDTO,
+  ): Promise<any> {
     const query = `
    mutation cartDeliveryAddressesAdd($addresses: [CartSelectableAddressInput!]!, $cartId: ID!) {
   cartDeliveryAddressesAdd(addresses: $addresses, cartId: $cartId) {
@@ -227,8 +236,8 @@ export class CheckoutService {
           // "oneTimeUse": true,
           // "selected": true,
           // "validationStrategy": "COUNTRY_CODE_ONLY"
-        }
-      }))
+        },
+      })),
     };
 
     try {
@@ -237,9 +246,9 @@ export class CheckoutService {
         email: queryParams.email,
         cartId: queryParams.cartId,
         phone: queryParams.addresses[0].deliveryAddress.phone,
-        countryCode: queryParams.addresses[0].deliveryAddress.countryCode
+        countryCode: queryParams.addresses[0].deliveryAddress.countryCode,
       });
-      return response
+      return response;
     } catch (error: any) {
       throw new BadGatewayException(`Shopify API Error: ${error.message}`);
     }
@@ -263,18 +272,21 @@ export class CheckoutService {
         `;
 
       const variables = {
-        "cartId": data.cartId,
-        "buyerIdentityInput": {
-          "email": data.email,
-          "phone": data.phone,
-          "countryCode": data.countryCode
-        }
-      }
+        cartId: data.cartId,
+        buyerIdentityInput: {
+          email: data.email,
+          phone: data.phone,
+          countryCode: data.countryCode,
+        },
+      };
 
       await this.client.request(query, { variables });
       return;
     } catch (error) {
-      console.log(`🚀 JISHH 🤦‍♂️😒 --  ~  CheckoutService ~  updateBuyerInformation ~  error:`, error);
+      console.log(
+        `🚀 JISHH 🤦‍♂️😒 --  ~  CheckoutService ~  updateBuyerInformation ~  error:`,
+        error,
+      );
       throw new BadGatewayException(error.message);
     }
   }

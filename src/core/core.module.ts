@@ -17,9 +17,7 @@ import { MailService } from "./services/mailer.service";
 
 @Module({
   imports: [
-    MongooseModule.forFeature([
-      { name: User.name, schema: UserSchema },
-    ]),
+    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     MailerModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -65,4 +63,4 @@ import { MailService } from "./services/mailer.service";
     MailService,
   ],
 })
-export class CoreModule { }
+export class CoreModule {}
