@@ -1,5 +1,5 @@
 {
-  "name": "ems",
+  "name": "jishh-anwar",
   "version": "0.0.1",
   "description": "",
   "author": "Jishan Anwar",
@@ -37,7 +37,10 @@
     "@nestjs/swagger": "^8.0.7",
     "@nestjs/throttler": "^6.2.1",
     "@nestjs/websockets": "^10.4.12",
+    "@shopify/shopify-api": "^11.7.0",
+    "@shopify/storefront-api-client": "^1.0.3",
     "@types/express": "^5.0.0",
+    "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
     "cache-manager": "^5",
     "chalk": "^5.3.0",

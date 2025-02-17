@@ -16,9 +16,9 @@ async function bootstrap() {
 
   // Enable CORS with a permissive configuration
   app.enableCors({
-    origin: "*", // Allow any origin (should be restricted in production)
+    origin: ["http://localhost:3000", "http://localhost:4200"],
     methods: ["GET", "POST", "PUT", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
+    allowedHeaders: ["Content-Type", "Authorization", "Accept", "X-Requested-With"],
   });
 
   // Use compression for better performance

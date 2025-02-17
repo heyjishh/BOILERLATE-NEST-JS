@@ -20,9 +20,9 @@ import { RequestEnergyDataDto } from "./dto/sockets.dto";
 })
 export class SocketService
   implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-  constructor(
-    // private readonly dashboardAndReportsService: DashboardAndReportsService,
-  ) { }
+  // constructor(
+  //   // private readonly dashboardAndReportsService: DashboardAndReportsService,
+  // ) { }
 
   @WebSocketServer() server: Server;
   private logger: Logger = new Logger("Socket Gateway");

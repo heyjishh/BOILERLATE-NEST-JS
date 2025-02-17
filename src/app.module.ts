@@ -8,11 +8,11 @@ import { CacheModule } from "@nestjs/cache-manager";
 import { DatabaseModule } from "./core/config/database/database.module";
 import { EnvironmentModule } from "./core/environment/environment.module";
 import { LoggingMiddleware } from "./core/middleware/logging.middleware";
-import { AuthModule } from "./modules/auth/auth.module";
 import { HttpExceptionFilter } from "./core/filters/http-exception.filter";
 import { HttpResponseInterceptor } from "./core/filters/http-response.fiilter";
 import { ApiNotFoundFilter } from "./core/filters/api-not-found.filter";
 import { CoreModule } from "./core/core.module";
+import { CheckoutModule } from "./modules/checkout/checkout.module";
 
 @Module({
   imports: [
@@ -30,10 +30,11 @@ import { CoreModule } from "./core/core.module";
         getTracker: (req) => req.ip, // Custom function to get the client's IP address
       },
     ]),
-    AuthModule,
+    // AuthModule,
     DatabaseModule,
     EnvironmentModule,
     CoreModule,
+    CheckoutModule
   ],
   controllers: [],
   providers: [
